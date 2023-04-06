@@ -7,6 +7,7 @@ import (
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
 	"log"
+	"os"
 	"reflect"
 	"strconv"
 	"strings"
@@ -108,9 +109,8 @@ func getLogWriter(logFileCfg *config.LogFileConfig) zapcore.WriteSyncer {
 		},
 	)
 	// 并且打印到控制台
-	//syncSt := zapcore.AddSync(os.Stderr)
-	//return zapcore.NewMultiWriteSyncer(syncL, syncSt)
-	return zapcore.NewMultiWriteSyncer(syncL)
+	syncSt := zapcore.AddSync(os.Stderr)
+	return zapcore.NewMultiWriteSyncer(syncL, syncSt)
 }
 
 // 负责设置 encoding 的日志格式
