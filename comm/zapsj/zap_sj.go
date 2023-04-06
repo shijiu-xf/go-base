@@ -149,7 +149,6 @@ func InitSJZap(c config.LogFileConfig) error {
 	lg.Printf("[InitSJZap] 初始化")
 	// 添加日志文件切割组件配置
 	if reflect.DeepEqual(c, config.LoggerConfig{}) {
-	} else {
 		return &ZapSJ{err: "[InitSJZap] 日志初始化失败，配置文件为空"}
 	}
 	lvl := new(zapcore.Level)
