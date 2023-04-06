@@ -99,6 +99,8 @@ func (c *JaegerConfig) GetJaegerConfig(config config.Config, path ...string) err
 	err := config.Get(path...).Scan(c)
 	return err
 }
+
+// GetLogFileConfig 获取日志文件配置
 func (c *LogFileConfig) GetLogFileConfig(config config.Config, path ...string) error {
 	err := config.Get(path...).Scan(c)
 	return err
