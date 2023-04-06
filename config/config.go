@@ -42,6 +42,21 @@ type LoggerConfig struct {
 	EncoderConfig    string `mapstructure:"encoderConfig" json:"encoderConfig"`
 	OutputPaths      string `mapstructure:"outputPaths" json:"outputPaths"`
 	ErrorOutputPaths string `mapstructure:"errorOutputPaths" json:"errorOutputPaths"`
+	// 日志文件配置
+	//LogFileConfig LogFileConfig `mapstructure:"logFileConfig" json:"logFileConfig"`
+}
+
+// LogFileConfig 日志文件配置，属性意义请参考 lumberjack.Logger
+type LogFileConfig struct {
+	Level      string `mapstructure:"level" json:"level"`
+	FileName   string `mapstructure:"fileName" json:"fileName"`
+	MaxSize    int    `mapstructure:"maxSize" json:"maxSize"`
+	MaxAge     int    `mapstructure:"maxAge" json:"maxAge"`
+	MaxBackups int    `mapstructure:"maxBackups" json:"maxBackups"`
+	LocalTime  bool   `mapstructure:"localTime" json:"localTime"`
+	Compress   bool   `mapstructure:"compress" json:"compress"`
+	// 是否开启日志监控
+	LogMonitorEnable bool `mapstructure:"logMonitorEnable" json:"logMonitorEnable"`
 }
 
 // JwtInfo 字段意义参考 jwt.RegisteredClaims
